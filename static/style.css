@@ -1,0 +1,386 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #0d1b2a, #1b263b, #000000);
+    color: #e0e1dd;
+    line-height: 1.6;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Particle Background */
+.particle-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+/* Neon Text Effect */
+.neon-text {
+    color: #00d4ff;
+    text-shadow: 0 0 5px #00d4ff, 0 0 10px #00d4ff, 0 0 20px #00d4ff, 0 0 40px #1e90ff;
+}
+
+/* Splash Container */
+.splash-container {
+    position: relative;
+    height: 65vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.splash-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(50%) contrast(120%) saturate(110%);
+    animation: pulseGlow 8s infinite alternate;
+}
+
+.splash-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+}
+
+.splash-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 4.5rem;
+    font-weight: 700;
+    animation: fadeInDown 1.5s ease-in-out;
+}
+
+.splash-subtitle {
+    font-size: 1.8rem;
+    font-weight: 400;
+    margin-top: 15px;
+    animation: fadeInUp 1.5s ease-in-out;
+}
+
+/* Main Container */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 60px 20px;
+    display: flex;
+    justify-content: center;
+    z-index: 1;
+    position: relative;
+}
+
+/* Content Box (Index) */
+.content-box {
+    background: rgba(27, 38, 59, 0.9);
+    padding: 60px;
+    border-radius: 25px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), inset 0 0 10px rgba(0, 212, 255, 0.2);
+    width: 100%;
+    max-width: 750px;
+    transform: perspective(1000px) rotateX(5deg);
+    transition: transform 0.5s ease;
+}
+
+.content-box:hover {
+    transform: perspective(1000px) rotateX(0deg);
+}
+
+/* Result Box */
+.result-box {
+    background: rgba(27, 38, 59, 0.9);
+    padding: 60px;
+    border-radius: 25px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), inset 0 0 10px rgba(0, 212, 255, 0.2);
+    width: 100%;
+    max-width: 950px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    transform: perspective(1000px) rotateX(5deg);
+    transition: transform 0.5s ease;
+}
+
+.result-box:hover {
+    transform: perspective(1000px) rotateX(0deg);
+}
+
+/* Common Box Elements */
+.upload-title, .result-label {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: #e0e1dd;
+    margin-bottom: 20px;
+}
+
+.upload-description, .confidence {
+    font-size: 1.3rem;
+    color: #b0b8c4;
+    margin-bottom: 30px;
+}
+
+/* File Upload Area */
+.file-drop-area {
+    border: 4px dashed #00d4ff;
+    border-radius: 20px;
+    padding: 70px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    position: relative;
+    background: rgba(14, 22, 38, 0.8);
+    box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
+}
+
+.file-drop-area.dragover {
+    background: rgba(0, 212, 255, 0.2);
+    border-color: #1e90ff;
+    box-shadow: 0 0 25px rgba(0, 212, 255, 0.5);
+}
+
+.file-input {
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+}
+
+.file-message {
+    font-size: 1.6rem;
+    color: #b0b8c4;
+}
+
+/* Buttons */
+.analyze-btn, .neon-btn {
+    background: linear-gradient(45deg, #00d4ff, #1e90ff);
+    color: white;
+    border: none;
+    padding: 20px 60px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    border-radius: 35px;
+    cursor: pointer;
+    margin-top: 35px;
+    transition: all 0.4s ease;
+    box-shadow: 0 0 15px rgba(0, 212, 255, 0.6), 0 10px 20px rgba(0, 0, 0, 0.3);
+    transform: perspective(500px) translateZ(10px);
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.analyze-btn:hover, .neon-btn:hover {
+    background: linear-gradient(45deg, #1e90ff, #00d4ff);
+    box-shadow: 0 0 25px rgba(0, 212, 255, 0.9), 0 15px 30px rgba(0, 0, 0, 0.4);
+    transform: perspective(500px) translateZ(20px);
+}
+
+/* Result Specific Styles */
+.result-header {
+    text-align: center;
+    padding: 60px 20px;
+    background: linear-gradient(90deg, #0d1b2a, #1e90ff);
+    color: white;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+}
+
+.result-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 4rem;
+    font-weight: 700;
+    animation: fadeInDown 1s ease-in-out;
+}
+
+.result-subtitle {
+    font-size: 1.6rem;
+    font-weight: 400;
+    margin-top: 15px;
+    animation: fadeInUp 1s ease-in-out;
+}
+
+.image-container {
+    flex: 1;
+    min-width: 320px;
+    text-align: center;
+}
+
+.uploaded-image {
+    max-width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.uploaded-image:hover {
+    transform: scale(1.08);
+    box-shadow: 0 15px 40px rgba(0, 212, 255, 0.3);
+}
+
+.result-details {
+    flex: 2;
+    min-width: 320px;
+}
+
+.result-value, .confidence-value {
+    color: #ff6b6b;
+}
+
+.download-section {
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* Survey Section */
+.survey-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 30px 0 20px;
+}
+
+.survey-section {
+    background: rgba(14, 22, 38, 0.8);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
+    margin-bottom: 30px;
+}
+
+.survey-section label {
+    display: block;
+    font-size: 1.2rem;
+    color: #b0b8c4;
+    margin: 10px 0 5px;
+}
+
+.survey-section select {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    color: #e0e1dd;
+    background: rgba(27, 38, 59, 0.9);
+    border: 1px solid #00d4ff;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0, 212, 255, 0.3);
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+}
+
+.survey-section select:focus {
+    outline: none;
+    border-color: #1e90ff;
+    box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+}
+
+/* Error Message */
+.error-message {
+    color: #ff6b6b;
+    font-size: 1.3rem;
+    margin-top: 25px;
+    text-align: center;
+    text-shadow: 0 0 5px rgba(255, 107, 107, 0.5);
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 30px;
+    font-size: 1.1rem;
+    color: #b0b8c4;
+    background: rgba(0, 0, 0, 0.9);
+    box-shadow: 0 -5px 15px rgba(0, 212, 255, 0.2);
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Animations */
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(60px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulseGlow {
+    from { filter: brightness(50%) contrast(120%); }
+    to { filter: brightness(60%) contrast(130%); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .splash-title, .result-title {
+        font-size: 3rem;
+    }
+
+    .splash-subtitle, .result-subtitle {
+        font-size: 1.4rem;
+    }
+
+    .content-box, .result-box {
+        padding: 40px;
+    }
+
+    .file-drop-area {
+        padding: 50px;
+    }
+
+    .analyze-btn, .neon-btn {
+        padding: 16px 45px;
+        font-size: 1.3rem;
+    }
+
+    .result-box {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .upload-title, .result-label {
+        font-size: 2.2rem;
+    }
+
+    .survey-section {
+        padding: 20px;
+    }
+
+    .survey-section label {
+        font-size: 1.1rem;
+    }
+
+    .survey-section select {
+        padding: 8px;
+        font-size: 0.9rem;
+    }
+}

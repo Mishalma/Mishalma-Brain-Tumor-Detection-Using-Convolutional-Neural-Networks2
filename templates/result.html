@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result - Brain Tumor Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="particles-js" class="particle-background"></div>
+
+    <div class="result-header">
+        <h1 class="result-title neon-text">Prediction Result</h1>
+        <p class="result-subtitle">Neural Analysis Complete</p>
+    </div>
+
+    <div class="container">
+        <div class="result-box">
+            <div class="image-container">
+                <img src="{{ url_for('static', filename=image_path) }}" alt="Uploaded MRI" class="uploaded-image">
+            </div>
+
+            <div class="result-details">
+                <h2 class="result-label">Result: <span class="result-value neon-text">{{ result }}</span></h2>
+                <p class="confidence">Confidence: <span class="confidence-value neon-text">{{ "%.2f"|format(confidence) }}%</span></p>
+
+                <div class="download-section">
+                    <a href="{{ url_for('download_report', filename=report_filename) }}" class="download-btn neon-btn">
+                        Download ({{ report_filename }})
+                    </a>
+                </div>
+
+                <a href="/" class="back-btn neon-btn">Scan Another MRI</a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>© 2025 Brain Tumor Detection by xAI. Powered by Neural Intelligence.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
